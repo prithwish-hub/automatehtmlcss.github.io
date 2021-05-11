@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <title>Automate CSS</title>
+    <style>
+        input {
+            display: inline-block;
+            width: 70px;
+        }
+
+        .invisible {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container py-4">
+            <header class="pb-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <span class="fs-4 fw-bold">Auto Generate CSS Properties</span>
+                </a>
+            </header>
+            <div>
+                <form action="" onsubmit="return GenerateCSS()">
+                    <div class="d-flex justify-content-between">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-white bg-dark">
+                                Background
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">background-color <input type="text" id="background-color"
+                                        class="float-end"></li>
+                                <li class="list-group-item">background-image <input type="text" id="background-image"
+                                        class="float-end"></li>
+                                <li class="list-group-item">background-repeat <input type="text" id="background-repeat"
+                                        class="float-end"></li>
+                                <li class="list-group-item">background-attachment <input type="text"
+                                        id="background-attachment" class="float-end"></li>
+                                <li class="list-group-item">background (Shorthand) <input type="text" id="background"
+                                        class="float-end"></li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-white bg-dark">
+                                Margin
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">margin-top <input type="text" id="margin-top"
+                                        class="float-end"></li>
+                                <li class="list-group-item">margin-bottom <input type="text" id="margin-bottom"
+                                        class="float-end"></li>
+                                <li class="list-group-item">margin-left <input type="text" id="margin-left"
+                                        class="float-end"></li>
+                                <li class="list-group-item">margin-right <input type="text" id="margin-right"
+                                        class="float-end"></li>
+                                <li class="list-group-item">margin (Shorthand) <input type="text" id="margin"
+                                        class="float-end"></li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-white bg-dark">
+                                Padding
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">padding-top <input type="text" id="padding-top"
+                                        class="float-end"></li>
+                                <li class="list-group-item">padding-bottom <input type="text" id="padding-bottom"
+                                        class="float-end"></li>
+                                <li class="list-group-item">padding-left <input type="text" id="padding-left"
+                                        class="float-end"></li>
+                                <li class="list-group-item">padding-right <input type="text" id="padding-right"
+                                        class="float-end"></li>
+                                <li class="list-group-item">padding (Shorthand) <input type="text" id="padding"
+                                        class="float-end"></li>
+                            </ul>
+                        </div>
+                    </div><br>
+                    <div class="d-flex justify-content-between">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-white bg-dark">
+                                Border
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">border-top <input type="text" id="border-top"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-left <input type="text" id="border-left"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-right <input type="text" id="border-right"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-bottom <input type="text" id="border-bottom"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-width <input type="text" id="border-width"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-style <input type="text" id="border-style"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-radius <input type="text" id="border-radius"
+                                        class="float-end"></li>
+                                <li class="list-group-item">border-color <input type="text" id="border-color"
+                                        class="float-end"></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-header text-white bg-dark">
+                                    Height/Width
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Height <input type="text" id="height" class="float-end">
+                                    </li>
+                                    <li class="list-group-item">Width <input type="text" id="width" class="float-end">
+                                    </li>
+                                </ul>
+                            </div><br>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-header text-white bg-dark">
+                                    Display/Other
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">display <input type="text" id="display"
+                                            class="float-end"></li>
+                                    <li class="list-group-item">text-indent <input type="text" id="text-indent"
+                                            class="float-end"></li>
+                                    <li class="list-group-item">word-spacing <input type="text" id="word-spacing"
+                                            class="float-end"></li>
+                                    <li class="list-group-item">column-count <input type="text" id="column-count"
+                                            class="float-end"></li>
+                                    <li class="list-group-item">list-style-type <input type="text" id="list-style-type"
+                                            class="float-end"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-white bg-dark">
+                                Text/Font
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">color <input type="text" id="color" class="float-end"></li>
+                                <li class="list-group-item">text-align <input type="text" id="text-align"
+                                        class="float-end"></li>
+                                <li class="list-group-item">text-decoration <input type="text" id="text-decoration"
+                                        class="float-end"></li>
+                                <li class="list-group-item">text-transform <input type="text" id="text-transform"
+                                        class="float-end"></li>
+                                <li class="list-group-item">font-family <input type="text" id="font-family"
+                                        class="float-end"></li>
+                                <li class="list-group-item">font-style <input type="text" id="font-style"
+                                        class="float-end"></li>
+                                <li class="list-group-item">font-weight <input type="text" id="font-weight"
+                                        class="float-end"></li>
+                                <li class="list-group-item">font-size <input type="text" id="font-size"
+                                        class="float-end"></li>
+                            </ul>
+                        </div>
+                    </div><br>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-dark" onclick="GenerateCSS()">Generate CSS</button>
+                        <a href="customHtml.html" class="btn btn-dark">Go to HTML&rarr;</a>
+                    </div>
+                </form>
+            </div><br>
+            <div class="card invisible" id="resultCard">
+                <h5 class="card-header bg-dark text-white">CSS Properties</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Copy and Paste</h5>
+                    <p class="card-text" id="result">Auto generated css will be displayed here</p>
+                </div>
+            </div>
+            <footer class="pt-3 mt-4 text-muted border-top">
+                <p>Created by Prithwish Samanta</p>
+                &copy; 2021
+            </footer>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="js/cssGenerator.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
